@@ -871,7 +871,7 @@ class ALManager:
             
          
             result_stage_2 = asyncio.run(get_query(args.dataset, self.train_semi_dataset,prompts_stage_2))
-            known_result_dict = {key: self.extract_integers(value)[0] if len(self.extract_integers(value)) > 0 else self.train_semi_dataset[key]['label_id_true'] for key, value in result_stage_2.items()}
+            known_result_dict = {key: self.extract_integers(value)[0] if len(self.extract_integers(value)) > 0 else -1 for key, value in result_stage_2.items()}
             result_dict = {**known_result_dict,**new_label_results}
             result_ordered = [result_dict.get(idx) for idx in all_selected_samples_id]
 
